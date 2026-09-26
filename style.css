@@ -16,16 +16,108 @@ body {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, salmon 0%, #fa8072 42%, mauve 100%);
   background: linear-gradient(135deg, #fa8072 0%, #e9968b 45%, #c784a5 100%);
+  position: relative;
 }
 
+/* Navigation */
+.navbar {
+  background-color: #fdbcb4;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3b2630;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #3b2630;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: #2a1620;
+}
+
+/* Bookmarks */
+.bookmarks-left,
+.bookmarks-right {
+  position: fixed;
+  font-size: 3rem;
+  z-index: 50;
+  animation: float 3s ease-in-out infinite;
+}
+
+.bookmarks-left {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-15deg);
+  color: #3c2f5c;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.bookmarks-right {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(15deg);
+  color: #3c2f5c;
+  filter: drop-shadow(-2px 2px 4px rgba(0, 0, 0, 0.1));
+  animation-delay: 1.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-50%) rotate(var(--rotate)) translateY(0);
+  }
+  50% {
+    transform: translateY(-50%) rotate(var(--rotate)) translateY(-10px);
+  }
+}
+
+.bookmarks-left {
+  --rotate: -15deg;
+}
+
+.bookmarks-right {
+  --rotate: 15deg;
+}
+
+/* Hero Section */
 .hero {
   display: grid;
   min-height: 100vh;
   place-content: center;
   padding: 3rem 1.5rem;
   text-align: center;
+  padding-top: calc(100vh * 0.3);
 }
 
 .eyebrow {
@@ -48,4 +140,21 @@ h1 {
   margin: 1.5rem auto 0;
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-menu {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .bookmarks-left,
+  .bookmarks-right {
+    font-size: 2rem;
+  }
+
+  .nav-container {
+    padding: 0 1rem;
+  }
 }
