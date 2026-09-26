@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail knihy</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const title = params.get('title') || 'Naše kniha';
+        document.getElementById('book-title').textContent = title;
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">📚 Knížky pro nás</div>
+        <ul class="nav-menu">
+          <li><a href="index.html">Domů</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="book-page">
+      <article class="book-article">
+        <span class="book-label">Kniha</span>
+        <h1 id="book-title">Naše kniha</h1>
+        <p>Tato stránka představuje vybraný titul z naší knihovny. Každý příběh je malou cestou do nového světa, plného emocí, ticha, kouzel a poznání.</p>
+        <p>Vybrali jsme pro vás příběh, který vás přenese do klidného a inspirativního prostředí. Rozhodně se nejedná o běžnou knihu, ale o místo, kam se můžete ponořit a nechat se unést vlastním tempem.</p>
+        <p>Všechny tituly na této stránce jsou inspirované atmosférou čtení, klidu a krásy. Pokud se vám tento příběh líbil, můžete se vrátit zpět na hlavní stránku a pokračovat další knihou.</p>
+        <a class="button-back" href="index.html">Zpět na hlavní stránku</a>
+      </article>
+    </div>
+  </body>
+</html>
