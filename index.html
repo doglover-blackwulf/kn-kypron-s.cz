@@ -1,31 +1,65 @@
 <!doctype html>
 <html lang="cs">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Knížky pro nás</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo">📚 Knížky pro nás</div>
-      <ul class="nav-menu">
-        <li><a href="#home">Domů</a></li>
-        <li><a href="#books">Knihy</a></li>
-        <li><a href="#about">O nás</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-      </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knížky pro nás</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">📚 Knížky pro nás</div>
+        <ul class="nav-menu">
+          <li><a href="#home">Domů</a></li>
+          <li><a href="#books">Knihy</a></li>
+          <li><a href="#about">O nás</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="page-shell" id="home">
+      <aside class="book-sidebar">
+        <h2>Naše knížky</h2>
+        <a class="book-link" href="kniha-1.html" target="_blank" rel="noopener noreferrer">Příběh v zlatém světle</a>
+        <a class="book-link" href="kniha-2.html" target="_blank" rel="noopener noreferrer">Dům plný kouzel</a>
+        <a class="book-link" href="kniha-3.html" target="_blank" rel="noopener noreferrer">Když se město usmívá</a>
+      </aside>
+
+      <main class="content-panel">
+        <section class="hero" id="books">
+          <p class="eyebrow">Místo pro milovníky knih</p>
+          <h1>Objevte příběhy, které zůstanou.</h1>
+          <p class="intro">
+            Tady najdete vybrané knihy, které otevírají nové světy, srdce a sny.
+            Každá kniha čeká na to, aby ji otevřela vaše představivost.
+          </p>
+        </section>
+
+        <section class="features" id="about">
+          <div class="feature-card">
+            <span>✨</span>
+            <h3>Romantické světy</h3>
+            <p>Milostné příběhy plné citů, odvahy a magie každodenního života.</p>
+          </div>
+          <div class="feature-card">
+            <span>📖</span>
+            <h3>Knihy pro každé ráno</h3>
+            <p>Od lehkých čtení po hlubší příběhy, které zůstanou v srdci dlouho.</p>
+          </div>
+          <div class="feature-card">
+            <span>🌙</span>
+            <h3>Věčné příběhy</h3>
+            <p>Stačí otevřít první stránku a vyrazit do světa plného možností.</p>
+          </div>
+        </section>
+
+        <section class="contact-box" id="contact">
+          <h2>Už se chystáš číst?</h2>
+          <p>Vyber si jednu z knížek v levém menu a otevři ji do nového okna.</p>
+        </section>
+      </main>
     </div>
-  </nav>
-
-  <div class="bookmarks-left">📖</div>
-  <div class="bookmarks-right">📕</div>
-
-  <main class="hero">
-    <p class="eyebrow">Knížky pro nás</p>
-    <h1>Objevte příběhy, které zůstanou.</h1>
-    <p class="intro">Místo pro milovníky knih, krásných slov a nových světů.</p>
-  </main>
-</body>
+  </body>
 </html>
