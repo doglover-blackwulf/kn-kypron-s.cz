@@ -1,0 +1,56 @@
+<div class="title-container">
+  <h1 id="section-title" class="section-title">Citáty</h1>
+
+  <div class="quote-decoration">
+    <span class="snowflake flake1">❄</span>
+    <span class="snowflake flake2">❄</span>
+    <span class="snowflake flake3">❄</span>
+
+    <span class="quote-text">
+      Buď jako sníh. Chladná ale nádherná.
+    </span>
+  </div>
+</div>
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.quote-decoration {
+  position: relative;
+  display: inline-block;
+}
+
+.quote-text {
+  font-size: 0.9rem;
+  color: #000;
+  font-style: italic;
+  transform: rotate(-5deg);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.snowflake {
+  position: absolute;
+  color: #b8dfff;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.flake1 {
+  top: -10px;
+  left: -8px;
+}
+
+.flake2 {
+  top: -14px;
+  right: -10px;
+}
+
+.flake3 {
+  bottom: -10px;
+  left: 50%;
+}
