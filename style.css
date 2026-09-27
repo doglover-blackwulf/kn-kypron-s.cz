@@ -47,6 +47,7 @@ body {
   margin: 0 auto;
   padding: 2rem 1.5rem;
   display: flex;
+  gap: 2rem;
   align-items: flex-start;
 }
 
@@ -58,6 +59,7 @@ body {
   box-shadow: 0 12px 30px rgba(45, 26, 60, 0.15);
   position: sticky;
   top: 110px;
+  flex-shrink: 0;
 }
 
 .book-stack {
@@ -108,6 +110,24 @@ body {
   box-shadow: 0 18px 28px rgba(45, 26, 60, 0.25);
 }
 
+.content-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.hero-title {
+  font-family: 'Pristina', cursive;
+  font-size: 5rem;
+  color: var(--violet-dark);
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(45, 26, 60, 0.12);
+  font-weight: 400;
+}
+
 .section-page {
   max-width: 900px;
   margin: 2rem auto;
@@ -154,9 +174,9 @@ body {
   opacity: 0.9;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 900px) {
   .page-shell {
-    padding: 1rem;
+    flex-direction: column;
   }
 
   .book-sidebar {
@@ -164,7 +184,21 @@ body {
     position: static;
   }
 
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .page-shell {
+    padding: 1rem;
+  }
+
   .book-link {
     min-height: 90px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
   }
 }
