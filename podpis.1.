@@ -1,0 +1,18 @@
+<article class="section-article">
+  <h1 id="section-title" class="section-title">Citáty</h1>
+
+  <p class="intro-text">
+    Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených
+    knížek, filmů, seriálů, mang a příběhů. Pokud jste umělci a vytváříte
+    kresby nebo animace, můžete mi napsat na Instagram:
+    <strong>knihy.pro.nas</strong>.
+  </p>
+</article>
+.intro-text {
+  max-width: 800px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+}
