@@ -4,23 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Citáty</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="section.html" />
+    <link href="https://fonts.googleapis.com/css2?family=Pristina&display=swap" rel="stylesheet" />
   </head>
-  <body>
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="logo">📚 Knížky pro nás</div>
-        <ul class="nav-menu">
-          <li><a href="index.html">Domů</a></li>
-        </ul>
-      </div>
+  <body class="section-body">
+    <nav class="section-nav">
+      <div class="logo">📚 Knížky pro nás</div>
+      <a href="index.html">Zpět</a>
     </nav>
 
-    <div class="book-page">
-      <article class="book-article">
-        <span class="book-label">Citáty</span>
-        <h1>Citáty</h1>
+    <main class="section-page">
+      <article class="section-article">
+        <h1 id="section-title" class="section-title">Citáty</h1>
       </article>
-    </div>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const title = params.get('title') || 'Citáty';
+      document.getElementById('section-title').textContent = title;
+    </script>
   </body>
 </html>
