@@ -31,10 +31,10 @@
       const params = new URLSearchParams(window.location.search);
       const title = params.get('title') || 'Citáty';
       document.getElementById('section-title').textContent = title;
-      
+
       // Show quote, description and snowflakes only on the "Citáty" page
       if (title === 'Citáty') {
-        document.getElementById('quote-text').textContent = 'Buď jako sníh. Chladná ale nádherná.';
+        document.getElementById('quote-text').textContent = 'Buď jako zima. Chladná ale nádherná.';
         document.getElementById('description-text').innerHTML = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, manga a příběhů. A pokud jste umělci a děláte kresby nebo animace, můžete mi napsat na <a href="https://www.instagram.com/knihy.pro.nas" target="_blank" rel="noopener noreferrer">Instagram: knihy.pro.nas</a>.';
         document.getElementById('citaty-page').classList.add('with-quote');
       }
