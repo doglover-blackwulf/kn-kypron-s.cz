@@ -23,6 +23,7 @@
 
         <h1 id="section-title" class="section-title">Citáty</h1>
         <p class="quote" id="quote-text"></p>
+        <p class="description" id="description-text"></p>
       </article>
     </main>
 
@@ -31,9 +32,10 @@
       const title = params.get('title') || 'Citáty';
       document.getElementById('section-title').textContent = title;
       
-      // Show quote only on the "Citáty" page
+      // Show quote, description and snowflakes only on the "Citáty" page
       if (title === 'Citáty') {
         document.getElementById('quote-text').textContent = 'Buď jako sníh. Chladná ale nádherná.';
+        document.getElementById('description-text').innerHTML = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, manga a příběhů. A pokud jste umělci a děláte kresby nebo animace, můžete mi napsat na <a href="https://www.instagram.com/knihy.pro.nas" target="_blank" rel="noopener noreferrer">Instagram: knihy.pro.nas</a>.';
         document.getElementById('citaty-page').classList.add('with-quote');
       }
     </script>
