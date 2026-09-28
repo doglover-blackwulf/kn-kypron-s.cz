@@ -14,8 +14,15 @@
     </nav>
 
     <main class="section-page">
-      <article class="section-article">
+      <article class="section-article" id="citaty-page">
+        <span class="snowflake snowflake-one" aria-hidden="true">❄</span>
+        <span class="snowflake snowflake-two" aria-hidden="true">✦</span>
+        <span class="snowflake snowflake-three" aria-hidden="true">❅</span>
+        <span class="snowflake snowflake-four" aria-hidden="true">❄</span>
+        <span class="snowflake snowflake-five" aria-hidden="true">✧</span>
+
         <h1 id="section-title" class="section-title">Citáty</h1>
+        <p class="quote" id="quote-text"></p>
       </article>
     </main>
 
@@ -23,6 +30,12 @@
       const params = new URLSearchParams(window.location.search);
       const title = params.get('title') || 'Citáty';
       document.getElementById('section-title').textContent = title;
+      
+      // Show quote only on the "Citáty" page
+      if (title === 'Citáty') {
+        document.getElementById('quote-text').textContent = 'Buď jako sníh. Chladná ale nádherná.';
+        document.getElementById('citaty-page').classList.add('with-quote');
+      }
     </script>
   </body>
 </html>
