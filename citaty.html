@@ -23,8 +23,9 @@
 
         <h1 id="section-title" class="section-title">Citáty</h1>
         <p class="quote" id="quote-text"></p>
-        <p class="description" id="description-text"></p>
       </article>
+
+      <p class="description" id="description-text"></p>
     </main>
 
     <script>
@@ -37,6 +38,7 @@
         document.getElementById('quote-text').textContent = 'Buď jako zima. Chladná ale nádherná.';
         document.getElementById('description-text').innerHTML = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, manga a příběhů. A pokud jste umělci a děláte kresby nebo animace, můžete mi napsat na <a href="https://www.instagram.com/knihy.pro.nas" target="_blank" rel="noopener noreferrer">Instagram: knihy.pro.nas</a>.';
         document.getElementById('citaty-page').classList.add('with-quote');
+        document.getElementById('description-text').classList.add('show-description');
       }
     </script>
   </body>
