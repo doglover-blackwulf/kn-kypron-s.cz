@@ -149,18 +149,18 @@ body {
 .dragon-decoration {
   display: flex;
   justify-content: flex-end;
-  margin: 2.25rem 1rem 0 0;
+  margin: 1rem 1rem 0 0;
   pointer-events: none;
 }
 
 .dragon-decoration img {
   display: block;
-  width: clamp(55px, 6vw, 80px);
+  width: clamp(100px, 12vw, 160px);
   height: auto;
 }
 
 .home-intro {
-  margin: 8rem 0 0 auto;
+  margin: 1rem 0 0 auto;
   max-width: 680px;
   color: #000;
   text-align: right;
@@ -332,7 +332,6 @@ body {
   }
 
   .home-intro {
-    margin-top: 4rem;
     text-align: left;
   }
 

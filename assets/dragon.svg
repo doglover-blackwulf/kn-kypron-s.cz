@@ -1,7 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
-  <title>Drak</title>
-  <path fill="#2d1a3c" d="M93 15c-12 5-21 14-26 26-9-9-23-12-34-5 9 3 15 8 18 15-12 1-23 7-31 17 14-4 25-3 34 2-7 8-11 17-11 28 7-8 15-13 25-15 4 10 11 18 21 22-3-9-3-17 0-24 11 1 20-3 28-11-9 1-16-1-23-6 5-13 5-28-1-42z"/>
-  <path fill="#b68ad2" d="M67 39c-4 7-5 14-3 21 8-4 14-10 18-18-5-2-10-3-15-3z"/>
-  <path fill="#d9985d" d="m80 53 3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1z"/>
-  <path fill="#2d1a3c" d="M32 32 17 19l5 20 12 7zm13-11L36 5l-1 22z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-labelledby="title">
+  <title id="title">Černo-zlatý drak</title>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5df91"/>
+      <stop offset=".5" stop-color="#c89b38"/>
+      <stop offset="1" stop-color="#8c641b"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#171416" stroke-width="5" d="M194 145C142 107 105 49 36 31c18 46 34 74 59 92-27-8-54-6-79 5 41 6 68 27 91 49-30-4-56 2-83 17 50 4 83 18 116 40 22-17 43-43 54-89Z"/>
+    <path fill="#171416" stroke-width="4" d="M219 151c41-52 81-91 144-112-12 34-27 61-49 81 28-10 56-9 86 0-28 18-50 35-66 59 25-7 49-4 75 8-42 11-73 29-101 56-33-17-68-46-89-92Z"/>
+    <path fill="#171416" stroke-width="5" d="M174 167c-35 23-64 57-111 73 20 2 38-1 54-7-10 16-25 31-48 44 44-4 79-20 105-44 12 21 29 34 53 42-8-20-9-39-4-56 20 16 43 22 70 20-23-14-37-31-47-52 18-18 30-40 35-67-31 15-55 20-83 16-6 14-14 25-24 31Z"/>
+    <path fill="#171416" stroke-width="4" d="M261 118c18-31 43-48 77-52 19-2 38 4 56 16-15 3-24 8-29 17l-32 4c-4 16-16 28-35 37l-32-5Z"/>
+    <path fill="none" stroke-width="4" d="m362 82 23 1-18 9m-44-9 19 8-18 10m-116 47c-12 18-27 31-44 42m23-56c-14-7-27-18-39-34m114-7c-13-7-25-19-36-35m65 70c19-7 35-20 47-37"/>
+    <path fill="#171416" stroke-width="4" d="M180 168c-4 24-18 44-40 61l-15 27 29-8 20-23 27-24m18-28c10 24 27 39 50 49l19 23-31-4-22-18-29-14"/>
+    <path fill="url(#gold)" stroke-width="2" d="m373 83 8 2-8 3z"/>
+    <path fill="none" stroke-width="3" d="m348 101 17 3-13 5m-97 68c14 5 27 8 42 8m-76 20 20 5"/>
+  </g>
 </svg>
