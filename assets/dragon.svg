@@ -1,41 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
-  <title id="title">Černý drak letící shora</title>
-  <desc id="desc">Černý drak s široce roztaženými křídly a dlouhým ocasem zakončeným koulí.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720" role="img" aria-labelledby="title desc">
+  <title id="title">Černo-zlatý drak letící shora</title>
+  <desc id="desc">Drak s velkými černými netopýřími křídly, zlatým středem těla, dlouhým ocasem a ozdobnou koulí na jeho konci.</desc>
   <defs>
-    <radialGradient id="orb" cx="35%" cy="30%">
-      <stop offset="0" stop-color="#777"/>
-      <stop offset=".55" stop-color="#222"/>
-      <stop offset="1" stop-color="#000"/>
+    <radialGradient id="orb" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#f5d978"/>
+      <stop offset=".45" stop-color="#b88618"/>
+      <stop offset="1" stop-color="#4f3005"/>
     </radialGradient>
+    <linearGradient id="gold" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f3d56b"/>
+      <stop offset=".5" stop-color="#c59625"/>
+      <stop offset="1" stop-color="#7a4d08"/>
+    </linearGradient>
   </defs>
 
-  <!-- široká levá membrána křídla -->
-  <path d="M300 145 C252 117 184 78 103 73 C58 70 25 82 6 104 C55 104 96 119 130 140 C91 136 52 146 20 168 C69 170 111 183 145 207 C117 214 91 232 71 255 C126 242 177 245 227 270 C247 280 268 291 292 307 C280 261 279 202 300 145Z" fill="#050505" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
-  <!-- široká pravá membrána křídla -->
-  <path d="M340 145 C388 117 456 78 537 73 C582 70 615 82 634 104 C585 104 544 119 510 140 C549 136 588 146 620 168 C571 170 529 183 495 207 C523 214 549 232 569 255 C514 242 463 245 413 270 C393 280 372 291 348 307 C360 261 361 202 340 145Z" fill="#050505" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
-
-  <!-- tělo a hlava při pohledu shora -->
-  <path d="M320 72 C294 72 276 94 273 124 C268 158 274 192 285 220 C292 239 296 255 293 273 C289 297 279 323 263 348 C286 334 305 317 320 294 C335 317 354 334 377 348 C361 323 351 297 347 273 C344 255 348 239 355 220 C366 192 372 158 367 124 C364 94 346 72 320 72Z" fill="#020202" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
-
-  <!-- hlava a rohy -->
-  <path d="M292 91 L263 58 L274 105 M348 91 L377 58 L366 105" fill="#020202" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
-  <path d="M292 92 Q320 70 348 92 L339 119 Q320 130 301 119Z" fill="#111" stroke="#fff" stroke-width="3"/>
-  <circle cx="307" cy="99" r="4" fill="#d7b638"/>
-  <circle cx="333" cy="99" r="4" fill="#d7b638"/>
-
-  <!-- paže/drápy -->
-  <path d="M281 170 Q245 180 220 211 L237 208 L220 230 L250 218 L243 241 L272 211" fill="#020202" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
-  <path d="M359 170 Q395 180 420 211 L403 208 L420 230 L390 218 L397 241 L368 211" fill="#020202" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
-
-  <!-- linky na křídlech -->
-  <g fill="none" stroke="#777" stroke-width="2" opacity=".8">
-    <path d="M294 153 Q215 120 104 103"/><path d="M287 177 Q205 153 83 151"/><path d="M283 204 Q204 193 111 208"/>
-    <path d="M346 153 Q425 120 536 103"/><path d="M353 177 Q435 153 557 151"/><path d="M357 204 Q436 193 529 208"/>
-    <path d="M320 132V278"/>
+  <g fill="#050505">
+    <path d="M383 190 C334 166 284 134 225 102 C158 66 81 55 24 77 C77 91 126 113 169 144 C111 132 55 140 6 170 C72 178 128 199 176 230 C120 239 75 261 37 299 C103 287 160 294 218 322 C264 344 300 368 334 397 C326 338 334 254 383 190Z"/>
+    <path d="M417 190 C466 166 516 134 575 102 C642 66 719 55 776 77 C723 91 674 113 631 144 C689 132 745 140 794 170 C728 178 672 199 624 230 C680 239 725 261 763 299 C697 287 640 294 582 322 C536 344 500 368 466 397 C474 338 466 254 417 190Z"/>
   </g>
 
-  <!-- dlouhý ocas -->
-  <path d="M320 270 C320 305 326 329 319 352 C313 373 295 386 276 398" fill="none" stroke="#020202" stroke-width="17" stroke-linecap="round"/>
-  <path d="M320 270 C320 305 326 329 319 352 C313 373 295 386 276 398" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="265" cy="405" r="14" fill="url(#orb)" stroke="#fff" stroke-width="3"/>
+  <g fill="none" stroke="#282828" stroke-linecap="round" stroke-width="7">
+    <path d="M365 211 C280 157 186 111 76 92"/>
+    <path d="M350 245 C258 207 168 183 59 171"/>
+    <path d="M340 282 C253 263 178 263 111 275"/>
+    <path d="M435 211 C520 157 614 111 724 92"/>
+    <path d="M450 245 C542 207 632 183 741 171"/>
+    <path d="M460 282 C547 263 622 263 689 275"/>
+  </g>
+
+  <path fill="#050505" d="M400 88 C363 88 337 119 334 166 C331 214 344 254 357 287 C367 313 369 342 362 373 C354 412 333 447 304 479 C342 468 375 447 400 415 C425 447 458 468 496 479 C467 447 446 412 438 373 C431 342 433 313 443 287 C456 254 469 214 466 166 C463 119 437 88 400 88Z"/>
+
+  <path fill="#090909" d="M365 111 L333 72 L345 132 C357 121 371 115 385 112Z"/>
+  <path fill="#090909" d="M435 111 L467 72 L455 132 C443 121 429 115 415 112Z"/>
+  <path fill="#111" d="M356 118 Q400 88 444 118 L432 159 Q400 179 368 159Z"/>
+  <path fill="#d2a532" d="M371 124 Q400 107 429 124 L423 151 Q400 165 377 151Z"/>
+
+  <path fill="url(#gold)" d="M376 177 Q400 164 424 177 L433 258 Q422 300 400 329 Q378 300 367 258Z"/>
+  <path fill="#e0b83f" d="M378 189 Q400 180 422 189 L424 221 Q400 210 376 221Z" opacity=".8"/>
+  <path fill="#b07b14" d="M376 236 Q400 226 424 236 L417 274 Q400 290 383 274Z" opacity=".85"/>
+
+  <path fill="#050505" d="M358 225 Q321 239 291 278 L314 272 L292 304 L331 287 L321 322 L365 278Z"/>
+  <path fill="#050505" d="M442 225 Q479 239 509 278 L486 272 L508 304 L469 287 L479 322 L435 278Z"/>
+
+  <path d="M400 300 C400 371 413 421 403 474 C396 514 374 549 353 579 C338 601 324 622 318 646" fill="none" stroke="#050505" stroke-linecap="round" stroke-width="25"/>
+  <path d="M400 300 C400 371 413 421 403 474 C396 514 374 549 353 579 C338 601 324 622 318 646" fill="none" stroke="#b88618" stroke-linecap="round" stroke-width="9"/>
+
+  <g fill="#050505">
+    <path d="M337 570 L318 602 L343 592 L335 620 L358 590Z"/>
+    <path d="M463 570 L482 602 L457 592 L465 620 L442 590Z"/>
+  </g>
+
+  <g transform="translate(318 654)">
+    <circle r="25" fill="#050505"/>
+    <circle r="18" fill="url(#orb)" stroke="#d2a532" stroke-width="4"/>
+    <path d="M0-28 L7-20 L18-20 L12-10 L16 1 L5 0 L0 10 L-5 0 L-16 1 L-12-10 L-18-20 L-7-20Z" fill="#b88618"/>
+  </g>
 </svg>
