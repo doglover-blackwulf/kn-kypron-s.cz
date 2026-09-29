@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Citáty</title>
+    <title>Citáty | Knížky pro nás</title>
+    <meta name="description" content="Citáty a inspirace ze světa knih a příběhů na webu Knížky pro nás." />
+    <meta name="keywords" content="citáty, knihy, příběhy, čtení, Knížky pro nás" />
+    <meta name="author" content="Knížky pro nás" />
+    <meta property="og:site_name" content="Knížky pro nás" />
+    <meta property="og:title" content="Citáty | Knížky pro nás" />
+    <meta property="og:description" content="Citáty a inspirace ze světa knih a příběhů na webu Knížky pro nás." />
+    <meta property="og:type" content="website" />
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Pristina&display=swap" rel="stylesheet" />
   </head>
@@ -33,10 +40,9 @@
       const title = params.get('title') || 'Citáty';
       document.getElementById('section-title').textContent = title;
 
-      // Show quote, description and snowflakes only on the "Citáty" page
       if (title === 'Citáty') {
         document.getElementById('quote-text').textContent = 'Buď jako zima. Chladná ale nádherná.';
-        document.getElementById('description-text').innerHTML = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, manga a příběhů. A pokud jste umělci a děláte kresby nebo animace, můžete mi napsat na <a href="https://www.instagram.com/knihy.pro.nas" target="_blank" rel="noopener noreferrer">Instagram: knihy.pro.nas</a>.';
+        document.getElementById('description-text').innerHTML = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, manga a příběhů.';
         document.getElementById('citaty-page').classList.add('with-quote');
         document.getElementById('description-text').classList.add('show-description');
       }
