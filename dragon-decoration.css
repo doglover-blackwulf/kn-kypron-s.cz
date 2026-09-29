@@ -1,0 +1,12 @@
+.dragon-decoration {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 1rem 0 0;
+  pointer-events: none;
+}
+
+.dragon-decoration img {
+  display: block;
+  width: clamp(100px, 12vw, 160px);
+  height: auto;
+}

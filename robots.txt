@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://doglover-blackwulf.github.io/kn-kypron-s.cz/sitemap.xml
