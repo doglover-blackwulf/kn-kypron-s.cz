@@ -1,53 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-labelledby="title desc">
-  <title id="title">Černý drak letící z pohledu shora</title>
-  <desc id="desc">Silný černý drak s roztaženými křídly, dlouhým ocasem a koulí na jeho konci.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Černý drak letící shora</title>
+  <desc id="desc">Černý drak s široce roztaženými křídly a dlouhým ocasem zakončeným koulí.</desc>
   <defs>
-    <filter id="softShadow" x="-20%" y="-30%" width="140%" height="170%">
-      <feGaussianBlur stdDeviation="3"/>
-    </filter>
-    <radialGradient id="orb" cx="35%" cy="30%" r="70%">
-      <stop offset="0" stop-color="#fff"/>
-      <stop offset=".18" stop-color="#bdbdbd"/>
-      <stop offset=".52" stop-color="#4b4b4b"/>
-      <stop offset="1" stop-color="#090909"/>
+    <radialGradient id="orb" cx="35%" cy="30%">
+      <stop offset="0" stop-color="#777"/>
+      <stop offset=".55" stop-color="#222"/>
+      <stop offset="1" stop-color="#000"/>
     </radialGradient>
   </defs>
 
-  <g opacity=".22" filter="url(#softShadow)" transform="translate(0 8)">
-    <path fill="#000" d="M250 111C221 111 197 132 190 163c-5 23-4 44 0 62l-12 32c-8 21-16 38-24 52 22-12 40-28 53-48 12 30 26 46 43 61 17-15 31-31 43-61 13 20 31 36 53 48-8-14-16-31-24-52l-12-32c4-18 5-39 0-62-7-31-31-52-60-52Z"/>
+  <!-- široká levá membrána křídla -->
+  <path d="M300 145 C252 117 184 78 103 73 C58 70 25 82 6 104 C55 104 96 119 130 140 C91 136 52 146 20 168 C69 170 111 183 145 207 C117 214 91 232 71 255 C126 242 177 245 227 270 C247 280 268 291 292 307 C280 261 279 202 300 145Z" fill="#050505" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+  <!-- široká pravá membrána křídla -->
+  <path d="M340 145 C388 117 456 78 537 73 C582 70 615 82 634 104 C585 104 544 119 510 140 C549 136 588 146 620 168 C571 170 529 183 495 207 C523 214 549 232 569 255 C514 242 463 245 413 270 C393 280 372 291 348 307 C360 261 361 202 340 145Z" fill="#050505" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- tělo a hlava při pohledu shora -->
+  <path d="M320 72 C294 72 276 94 273 124 C268 158 274 192 285 220 C292 239 296 255 293 273 C289 297 279 323 263 348 C286 334 305 317 320 294 C335 317 354 334 377 348 C361 323 351 297 347 273 C344 255 348 239 355 220 C366 192 372 158 367 124 C364 94 346 72 320 72Z" fill="#020202" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- hlava a rohy -->
+  <path d="M292 91 L263 58 L274 105 M348 91 L377 58 L366 105" fill="#020202" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M292 92 Q320 70 348 92 L339 119 Q320 130 301 119Z" fill="#111" stroke="#fff" stroke-width="3"/>
+  <circle cx="307" cy="99" r="4" fill="#d7b638"/>
+  <circle cx="333" cy="99" r="4" fill="#d7b638"/>
+
+  <!-- paže/drápy -->
+  <path d="M281 170 Q245 180 220 211 L237 208 L220 230 L250 218 L243 241 L272 211" fill="#020202" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M359 170 Q395 180 420 211 L403 208 L420 230 L390 218 L397 241 L368 211" fill="#020202" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- linky na křídlech -->
+  <g fill="none" stroke="#777" stroke-width="2" opacity=".8">
+    <path d="M294 153 Q215 120 104 103"/><path d="M287 177 Q205 153 83 151"/><path d="M283 204 Q204 193 111 208"/>
+    <path d="M346 153 Q425 120 536 103"/><path d="M353 177 Q435 153 557 151"/><path d="M357 204 Q436 193 529 208"/>
+    <path d="M320 132V278"/>
   </g>
 
-  <!-- Levé křídlo, pohled shora -->
-  <path fill="#090909" stroke="#fff" stroke-width="3" stroke-linejoin="round" d="M238 122C201 101 161 79 109 69 70 61 35 64 7 80c39 6 66 18 91 34-28-5-58-1-88 13 37 7 66 20 91 39-22 3-44 13-65 31 43-1 80 8 113 29 16 10 30 19 43 29-2-25 2-47 12-66 12-23 25-43 34-67Z"/>
-  <!-- Pravé křídlo, pohled shora -->
-  <path fill="#090909" stroke="#fff" stroke-width="3" stroke-linejoin="round" d="M282 122C319 101 359 79 411 69c39-8 74-5 102 11-39 6-66 18-91 34 28-5 58-1 88 13-37 7-66 20-91 39 22 3 44 13 65 31-43-1-80 8-113 29-16 10-30 19-43 29 2-25-2-47-12-66-12-23-25-43-34-67Z"/>
-
-  <!-- Hlava, hřbet a ocas -->
-  <path fill="#050505" stroke="#fff" stroke-width="3" stroke-linejoin="round" d="M250 67c-16 0-28 13-30 30l-9 34c-7 25-11 47-9 67 2 17 8 31 14 43-7 25-17 51-32 75 22-14 39-31 52-52 7 11 12 17 14 19 2-2 7-8 14-19 13 21 30 38 52 52-15-24-25-50-32-75 6-12 12-26 14-43 2-20-2-42-9-67l-9-34c-2-17-14-30-30-30Z"/>
-
-  <!-- Rohy, oči a obličej -->
-  <path fill="#050505" stroke="#fff" stroke-width="3" d="M232 80 207 54l7 39m29-13-4-38m20 38 4-38m5 12 25-26-7 39"/>
-  <path fill="#d9b83f" stroke="#fff" stroke-width="1.5" d="M235 91c5-5 10-7 15-7s10 2 15 7l-6 10c-6 3-12 3-18 0Z"/>
-  <circle fill="#050505" cx="244" cy="93" r="2"/>
-  <circle fill="#050505" cx="256" cy="93" r="2"/>
-  <path fill="none" stroke="#fff" stroke-width="2" d="M242 106q8 6 16 0"/>
-
-  <!-- Membrány a hřbetní linie -->
-  <g fill="none" stroke="#777" stroke-width="2" opacity=".75">
-    <path d="M218 128C171 105 121 88 65 79"/>
-    <path d="M214 145C165 127 119 116 58 112"/>
-    <path d="M211 164C159 151 115 148 53 151"/>
-    <path d="M302 128C349 105 399 88 455 79"/>
-    <path d="M306 145C355 127 401 116 462 112"/>
-    <path d="M309 164C361 151 405 148 467 151"/>
-    <path d="M250 119v86m-14-74v65m28-65v65"/>
-  </g>
-
-  <!-- Dlouhý ocas -->
-  <path fill="none" stroke="#050505" stroke-width="13" stroke-linecap="round" d="M250 202C250 230 253 253 250 276c-3 25-14 39-22 50-7 10-9 19-5 27"/>
-  <path fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" d="M250 202C250 230 253 253 250 276c-3 25-14 39-22 50-7 10-9 19-5 27"/>
-
-  <!-- Koule na konci ocasu -->
-  <circle cx="222" cy="353" r="17" fill="url(#orb)" stroke="#fff" stroke-width="3"/>
-  <path fill="none" stroke="#fff" stroke-width="2" opacity=".7" d="M215 344q8-6 15 0"/>
+  <!-- dlouhý ocas -->
+  <path d="M320 270 C320 305 326 329 319 352 C313 373 295 386 276 398" fill="none" stroke="#020202" stroke-width="17" stroke-linecap="round"/>
+  <path d="M320 270 C320 305 326 329 319 352 C313 373 295 386 276 398" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="265" cy="405" r="14" fill="url(#orb)" stroke="#fff" stroke-width="3"/>
 </svg>
