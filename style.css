@@ -146,6 +146,19 @@ body {
   paint-order: stroke fill;
 }
 
+.dragon-decoration {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2.25rem 1rem 0 0;
+  pointer-events: none;
+}
+
+.dragon-decoration img {
+  display: block;
+  width: clamp(55px, 6vw, 80px);
+  height: auto;
+}
+
 .home-intro {
   margin: 8rem 0 0 auto;
   max-width: 680px;
@@ -321,6 +334,10 @@ body {
   .home-intro {
     margin-top: 4rem;
     text-align: left;
+  }
+
+  .dragon-decoration {
+    margin: 1.5rem 0.5rem 0 0;
   }
 
   .section-nav {
