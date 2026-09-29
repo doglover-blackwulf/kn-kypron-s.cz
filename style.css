@@ -120,32 +120,34 @@ body {
 .content-main {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  min-height: 60vh;
+  min-height: 80vh;
+  padding-top: 2rem;
 }
 
 .home-content {
-  width: min(760px, 100%);
+  width: min(1100px, 100%);
   margin-left: auto;
 }
 
 .hero-title {
-  font-family: 'Pristina', cursive;
-  font-size: 6rem;
-  line-height: 1.15;
-  color: var(--old-rose);
+  width: 100%;
   margin: 0;
   text-align: center;
-  text-shadow: 0 2px 8px rgba(45, 26, 60, 0.12);
-  -webkit-text-stroke: 1px #000;
+  font-family: "Calibri Light", Calibri, "Arial Narrow", sans-serif;
+  font-size: clamp(5rem, 13vw, 12rem);
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  color: #d34fc4;
+  text-shadow: 0 4px 0 #efb1e7, 0 10px 24px rgba(77, 45, 105, 0.28);
+  -webkit-text-stroke: 2px #b735a9;
   paint-order: stroke fill;
-  font-weight: 400;
-  max-width: 800px;
 }
 
 .home-intro {
-  margin: 2.5rem 0 0 auto;
+  margin: 8rem 0 0 auto;
   max-width: 680px;
   color: #000;
   text-align: right;
@@ -288,6 +290,7 @@ body {
 
   .content-main {
     width: 100%;
+    padding-top: 1rem;
   }
 
   .home-content {
@@ -295,7 +298,7 @@ body {
   }
 
   .hero-title {
-    font-size: 4rem;
+    font-size: clamp(4rem, 15vw, 8rem);
   }
 }
 
@@ -310,11 +313,13 @@ body {
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(3.25rem, 16vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
   }
 
   .home-intro {
-    margin-top: 1.5rem;
+    margin-top: 4rem;
     text-align: left;
   }
 
