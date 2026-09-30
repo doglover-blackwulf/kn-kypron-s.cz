@@ -30,11 +30,11 @@ body {
 }
 
 body.section-body {
-  background: linear-gradient(135deg, var(--drbat-bg1) 0%, var(--drbat-bg2) 100%);
+  background: var(--old-orange);
 }
 
-body.section-body.orange-theme {
-  background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg3) 100%);
+body.section-body.drbat-theme {
+  background: linear-gradient(135deg, var(--drbat-bg1) 0%, var(--drbat-bg2) 100%);
 }
 
 .navbar {
