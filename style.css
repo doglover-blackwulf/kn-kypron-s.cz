@@ -132,7 +132,7 @@ body.section-body.orange-theme {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  min-height: 80vh;
+  min-height: auto;
   padding-top: 2rem;
 }
 
@@ -175,7 +175,7 @@ body.section-body.orange-theme {
 }
 
 .home-intro {
-  margin: 3rem 0 0 auto;
+  margin: 1rem 0 0 auto;
   max-width: 680px;
   color: #000;
   text-align: right;
@@ -347,7 +347,7 @@ body.section-body.orange-theme {
   }
 
   .home-intro {
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: left;
   }
 
