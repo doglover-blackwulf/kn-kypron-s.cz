@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pojďme drbat | Knížky pro nás</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pristina&display=swap" rel="stylesheet">
+  <style>
+    body.drbat-page { background: linear-gradient(135deg, #A2B447 0%, #556F30 100%); }
+    .drbat-main { max-width: 900px; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+    .drbat-header { padding: 2.5rem; background: rgba(255,255,255,.16); border: 1px solid rgba(77,45,105,.08); border-radius: 26px; text-align: center; box-shadow: 0 10px 24px rgba(45,26,60,.08); }
+    .drbat-title { margin: 0; font-family: 'Pristina', cursive; font-size: clamp(3rem, 6vw, 5.5rem); color: #c08080; font-weight: 400; line-height: 1.1; -webkit-text-stroke: 1px #000; paint-order: stroke fill; }
+    .drbat-list { padding: 2rem 0 1rem; }
+    .drbat-item { background: #fff; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,.14); }
+    .drbat-item img { display: block; max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: 10px; }
+    .drbat-text { color: #333; line-height: 1.6; white-space: pre-wrap; }
+    .drbat-stars, .stars-container { display: flex; gap: .3rem; margin: 1rem 0; }
+    .star { color: #ddd; font-size: 1.8rem; cursor: pointer; }
+    .star.active { color: #ffc107; }
+    .drbat-stars .star { font-size: 1.25rem; cursor: default; }
+    .add-button { position: fixed; right: 1rem; bottom: 1rem; z-index: 999; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border: 3px solid #fff; border-radius: 50%; background: #000; color: #fff; font-size: 1.8rem; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+    .add-button:hover { transform: scale(1.08); }
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.5); }
+    .modal-overlay.active { display: block; }
+    .modal-panel { display: none; position: fixed; z-index: 1001; top: 50%; right: 0; width: min(66.67%, 900px); height: 80vh; transform: translateY(-50%); flex-direction: column; overflow-y: auto; padding: 2rem; background: #fff; border-radius: 12px 0 0 12px; box-shadow: -4px 0 16px rgba(0,0,0,.2); }
+    .modal-panel.active { display: flex; }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; border: 0; background: none; color: #666; font-size: 1.5rem; cursor: pointer; }
+    .password-section { margin-bottom: 1rem; padding: 1rem; background: #f5f5f5; border-radius: 8px; }
+    .password-section label, .form-group label { display: block; margin-bottom: .5rem; color: #333; font-weight: 700; }
+    .password-section input, .form-group input[type="file"], .form-group textarea { width: 100%; padding: .75rem; border: 2px solid #ddd; border-radius: 6px; font: inherit; }
+    .password-error { display: none; color: #c62828; font-size: .85rem; }
+    .password-error.show { display: block; }
+    .form-group { display: none; margin-bottom: 1rem; }
+    .form-group.active { display: block; }
+    .form-group textarea { min-height: 200px; resize: vertical; }
+    .save-button { margin-top: .5rem; padding: .6rem 1.2rem; border: 0; border-radius: 6px; background: #333; color: #fff; font-weight: 700; cursor: pointer; }
+    @media (max-width: 620px) { .modal-panel { width: 92%; } .drbat-header { padding: 2rem 1rem; } }
+  </style>
+</head>
+<body class="section-body drbat-page">
+  <nav class="section-nav"><div class="logo">📚 Knížky pro nás</div><a href="index.html">Zpět</a></nav>
+  <main class="drbat-main">
+    <header class="drbat-header"><h1 class="drbat-title">Pojďme drbat</h1></header>
+    <section class="drbat-list" id="drbat-list" aria-label="Uložené příspěvky"></section>
+  </main>
+  <button class="add-button" id="add-btn" type="button" aria-label="Přidat příspěvek">+</button>
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <aside class="modal-panel" id="modal-panel" aria-label="Nový příspěvek">
+    <button class="modal-close" id="close-btn" type="button" aria-label="Zavřít">✕</button>
+    <div class="password-section"><label for="password1">Heslo pro obrázek:</label><input type="password" id="password1" placeholder="Zadej heslo..."><div class="password-error" id="password1-error">Špatné heslo!</div></div>
+    <div class="password-section"><label for="password2">Heslo pro text:</label><input type="password" id="password2" placeholder="Zadej heslo..."><div class="password-error" id="password2-error">Špatné heslo!</div></div>
+    <div class="form-group" id="image-form"><label for="image-input">Vložit obrázek:</label><input type="file" id="image-input" accept="image/*"></div>
+    <div class="form-group" id="text-form"><label for="text-input">Tvůj příspěvek:</label><textarea id="text-input" rows="12" placeholder="Napiš cokoliv..."></textarea><label>Hodnocení:</label><div class="stars-container" id="stars-container"><span class="star" data-rating="1">★</span><span class="star" data-rating="2">★</span><span class="star" data-rating="3">★</span><span class="star" data-rating="4">★</span><span class="star" data-rating="5">★</span></div><button class="save-button" id="save-btn" type="button">Uložit</button></div>
+  </aside>
+  <script>
+    const $ = id => document.getElementById(id);
+    const PASSWORD1 = 'Deraxy 112';
+    const PASSWORD2 = 'Laitry 113';
+    let currentImage = null;
+    let currentRating = 0;
+
+    function displayItem(item) {
+      const element = document.createElement('article');
+      element.className = 'drbat-item';
+      if (item.image) { const image = document.createElement('img'); image.src = item.image; image.alt = 'Obrázek příspěvku'; element.appendChild(image); }
+      if (item.text) { const text = document.createElement('div'); text.className = 'drbat-text'; text.textContent = item.text; element.appendChild(text); }
+      if (item.rating) { const stars = document.createElement('div'); stars.className = 'drbat-stars'; for (let i = 1; i <= 5; i += 1) { const star = document.createElement('span'); star.className = 'star' + (i <= item.rating ? ' active' : ''); star.textContent = '★'; stars.appendChild(star); } element.appendChild(stars); }
+      $('drbat-list').appendChild(element);
+    }
+
+    try { JSON.parse(localStorage.getItem('drbat-items') || '[]').forEach(displayItem); } catch (error) { console.error(error); }
+
+    function resetForm() { $('password1').value = ''; $('password2').value = ''; $('image-input').value = ''; $('text-input').value = ''; currentImage = null; currentRating = 0; $('image-form').classList.remove('active'); $('text-form').classList.remove('active'); document.querySelectorAll('.password-error').forEach(error => error.classList.remove('show')); document.querySelectorAll('#stars-container .star').forEach(star => star.classList.remove('active')); }
+    function closeModal() { $('modal-overlay').classList.remove('active'); $('modal-panel').classList.remove('active'); resetForm(); }
+
+    $('add-btn').addEventListener('click', () => { $('modal-overlay').classList.add('active'); $('modal-panel').classList.add('active'); });
+    $('close-btn').addEventListener('click', closeModal);
+    $('modal-overlay').addEventListener('click', closeModal);
+    $('password1').addEventListener('change', event => { const valid = event.target.value === PASSWORD1; $('image-form').classList.toggle('active', valid); $('password1-error').classList.toggle('show', !valid); });
+    $('password2').addEventListener('change', event => { const valid = event.target.value === PASSWORD2; $('text-form').classList.toggle('active', valid); $('password2-error').classList.toggle('show', !valid); });
+    $('image-input').addEventListener('change', event => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = result => { currentImage = result.target.result; }; reader.readAsDataURL(file); });
+    $('stars-container').addEventListener('click', event => { if (!event.target.classList.contains('star')) return; currentRating = Number(event.target.dataset.rating); document.querySelectorAll('#stars-container .star').forEach(star => star.classList.toggle('active', Number(star.dataset.rating) <= currentRating)); });
+    $('save-btn').addEventListener('click', () => { const text = $('text-input').value.trim(); if (!currentImage && !text) return alert('Vyplň alespoň něco!'); const item = { image: currentImage, text, rating: currentRating }; const items = JSON.parse(localStorage.getItem('drbat-items') || '[]'); items.push(item); localStorage.setItem('drbat-items', JSON.stringify(items)); displayItem(item); closeModal(); });
+  </script>
+</body>
+</html>
