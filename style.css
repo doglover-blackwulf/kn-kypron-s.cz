@@ -8,6 +8,8 @@
   --violet-dark: #2d1a3c;
   --text: #f9f1ff;
   --old-orange: #d9985d;
+  --drbat-bg1: #A2B447;
+  --drbat-bg2: #556F30;
 }
 
 * {
@@ -25,6 +27,14 @@ body {
 
 body {
   min-height: 100vh;
+}
+
+body.section-body {
+  background: linear-gradient(135deg, var(--drbat-bg1) 0%, var(--drbat-bg2) 100%);
+}
+
+body.section-body.orange-theme {
+  background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg3) 100%);
 }
 
 .navbar {
@@ -151,15 +161,17 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: clamp(180px, 28vw, 300px);
   margin: 2rem auto 0;
   pointer-events: none;
 }
 
 .dragon-decoration img {
   display: block;
-  width: clamp(180px, 28vw, 300px);
+  width: auto;
   height: auto;
   max-width: 100%;
+  max-height: 100%;
 }
 
 .home-intro {
@@ -340,11 +352,8 @@ body {
   }
 
   .dragon-decoration {
+    min-height: clamp(150px, 55vw, 230px);
     margin: 1.5rem auto 0;
-  }
-
-  .dragon-decoration img {
-    width: clamp(150px, 55vw, 230px);
   }
 
   .section-nav {
