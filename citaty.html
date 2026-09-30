@@ -13,6 +13,224 @@
     <meta property="og:type" content="website" />
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Pristina&display=swap" rel="stylesheet" />
+    <style>
+      .add-button {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 60px;
+        height: 60px;
+        background: #000;
+        color: #fff;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        font-size: 2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+
+      .add-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+
+      .modal-overlay.active {
+        display: block;
+      }
+
+      .modal-panel {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 66.67%;
+        max-width: 900px;
+        height: 80vh;
+        background: #fff;
+        border-radius: 12px 0 0 12px;
+        box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
+        display: none;
+        flex-direction: column;
+        padding: 2rem;
+        overflow-y: auto;
+        z-index: 1001;
+      }
+
+      .modal-panel.active {
+        display: flex;
+      }
+
+      .modal-panel.hidden {
+        display: none;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #666;
+      }
+
+      .password-section {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: #f5f5f5;
+        border-radius: 8px;
+      }
+
+      .password-section label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .password-section input[type="password"] {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .password-error {
+        color: #d32f2f;
+        font-size: 0.85rem;
+        display: none;
+      }
+
+      .password-error.show {
+        display: block;
+      }
+
+      .form-group {
+        display: none;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group.active {
+        display: block;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .form-group input[type="file"],
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-family: Georgia, serif;
+      }
+
+      .form-group textarea {
+        min-height: 200px;
+        resize: vertical;
+      }
+
+      .stars-container {
+        display: flex;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      .star {
+        font-size: 2rem;
+        cursor: pointer;
+        color: #ddd;
+        transition: color 0.2s;
+      }
+
+      .star.active {
+        color: #ffc107;
+      }
+
+      .save-button {
+        background: #333;
+        color: #fff;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: all 0.3s;
+      }
+
+      .save-button:hover {
+        background: #555;
+      }
+
+      .save-button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      .drbat-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      .drbat-item {
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .drbat-item img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+      }
+
+      .drbat-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .drbat-stars {
+        display: flex;
+        gap: 0.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .drbat-stars .star {
+        font-size: 1.25rem;
+      }
+    </style>
   </head>
   <body class="section-body">
     <nav class="section-nav">
@@ -28,23 +246,250 @@
         <span class="snowflake snowflake-four" aria-hidden="true">❄</span>
         <span class="snowflake snowflake-five" aria-hidden="true">✧</span>
 
-        <h1 id="section-title" class="section-title">Citáty</h1>
+        <h1 id="section-title" class="section-title">Pojďme drbat</h1>
         <p class="quote" id="quote-text"></p>
       </article>
 
-      <p class="description" id="description-text"></p>
+      <div class="drbat-container" id="drbat-list"></div>
     </main>
 
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const title = params.get('title') || 'Citáty';
-      document.getElementById('section-title').textContent = title;
+    <!-- Plus button -->
+    <button class="add-button" id="add-btn">+</button>
 
-      if (title === 'Citáty') {
-        document.getElementById('quote-text').textContent = 'Buď jako zima. Chladná ale nádherná.';
-        document.getElementById('description-text').innerHTML = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, manga a příběhů.';
-        document.getElementById('citaty-page').classList.add('with-quote');
-        document.getElementById('description-text').classList.add('show-description');
+    <!-- Modal overlay -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <!-- Modal panel -->
+    <div class="modal-panel" id="modal-panel">
+      <button class="modal-close" id="close-btn">✕</button>
+
+      <!-- Password 1 for image -->
+      <div class="password-section" id="password1-section">
+        <label for="password1">Heslo pro obrázek:</label>
+        <input type="password" id="password1" placeholder="Zadej heslo...">
+        <div class="password-error" id="password1-error">Špatné heslo!</div>
+      </div>
+
+      <!-- Password 2 for text -->
+      <div class="password-section" id="password2-section">
+        <label for="password2">Heslo pro text:</label>
+        <input type="password" id="password2" placeholder="Zadej heslo...">
+        <div class="password-error" id="password2-error">Špatné heslo!</div>
+      </div>
+
+      <!-- Image form -->
+      <div class="form-group" id="image-form">
+        <label for="image-input">Vložit obrázek:</label>
+        <input type="file" id="image-input" accept="image/*">
+      </div>
+
+      <!-- Text form -->
+      <div class="form-group" id="text-form">
+        <label for="text-input">Tvůj příspěvek:</label>
+        <textarea id="text-input" placeholder="Napiš cokoliv..."></textarea>
+
+        <label style="display: block; margin-top: 1rem; font-weight: 700;">Hodnocení:</label>
+        <div class="stars-container" id="stars-container">
+          <span class="star" data-rating="1">★</span>
+          <span class="star" data-rating="2">★</span>
+          <span class="star" data-rating="3">★</span>
+          <span class="star" data-rating="4">★</span>
+          <span class="star" data-rating="5">★</span>
+        </div>
+
+        <button class="save-button" id="save-btn">Uložit</button>
+      </div>
+    </div>
+
+    <script>
+      const PASSWORD1 = "Deraxy 112";
+      const PASSWORD2 = "Laitry 113";
+
+      let currentRating = 0;
+      let currentImage = null;
+      let password1Correct = false;
+      let password2Correct = false;
+
+      // Elements
+      const addBtn = document.getElementById("add-btn");
+      const modalOverlay = document.getElementById("modal-overlay");
+      const modalPanel = document.getElementById("modal-panel");
+      const closeBtn = document.getElementById("close-btn");
+      const password1Input = document.getElementById("password1");
+      const password2Input = document.getElementById("password2");
+      const password1Error = document.getElementById("password1-error");
+      const password2Error = document.getElementById("password2-error");
+      const imageForm = document.getElementById("image-form");
+      const textForm = document.getElementById("text-form");
+      const imageInput = document.getElementById("image-input");
+      const textInput = document.getElementById("text-input");
+      const starsContainer = document.getElementById("stars-container");
+      const saveBtn = document.getElementById("save-btn");
+      const drbatList = document.getElementById("drbat-list");
+
+      // Load data from localStorage
+      function loadData() {
+        const saved = localStorage.getItem("drbat-items");
+        if (saved) {
+          try {
+            const items = JSON.parse(saved);
+            items.forEach(item => displayItem(item));
+          } catch (e) {
+            console.error("Chyba při načítání dat:", e);
+          }
+        }
+      }
+
+      // Display item
+      function displayItem(item) {
+        const itemEl = document.createElement("div");
+        itemEl.className = "drbat-item";
+
+        let html = "";
+        if (item.image) {
+          html += `<img src="${item.image}" alt="Obrázek">`;
+        }
+        if (item.text) {
+          html += `<div class="drbat-text">${item.text}</div>`;
+        }
+        if (item.rating) {
+          html += `<div class="drbat-stars">`;
+          for (let i = 1; i <= 5; i++) {
+            html += `<span class="star ${i <= item.rating ? "active" : ""}">★</span>`;
+          }
+          html += `</div>`;
+        }
+
+        itemEl.innerHTML = html;
+        drbatList.appendChild(itemEl);
+      }
+
+      // Save data to localStorage
+      function saveData() {
+        if (!currentImage && !textInput.value.trim()) {
+          alert("Vyplň alespoň něco!");
+          return;
+        }
+
+        const item = {
+          image: currentImage,
+          text: textInput.value.trim(),
+          rating: currentRating
+        };
+
+        const saved = localStorage.getItem("drbat-items") || "[]";
+        const items = JSON.parse(saved);
+        items.push(item);
+        localStorage.setItem("drbat-items", JSON.stringify(items));
+
+        displayItem(item);
+        resetForm();
+        closeModal();
+      }
+
+      // Reset form
+      function resetForm() {
+        password1Input.value = "";
+        password2Input.value = "";
+        imageInput.value = "";
+        textInput.value = "";
+        currentRating = 0;
+        currentImage = null;
+        password1Correct = false;
+        password2Correct = false;
+        updateStarsUI();
+        password1Error.classList.remove("show");
+        password2Error.classList.remove("show");
+        imageForm.classList.remove("active");
+        textForm.classList.remove("active");
+      }
+
+      // Open modal
+      function openModal() {
+        modalOverlay.classList.add("active");
+        modalPanel.classList.add("active");
+        resetForm();
+      }
+
+      // Close modal
+      function closeModal() {
+        modalOverlay.classList.remove("active");
+        modalPanel.classList.remove("active");
+        resetForm();
+      }
+
+      // Check password 1
+      password1Input.addEventListener("change", () => {
+        if (password1Input.value === PASSWORD1) {
+          password1Correct = true;
+          password1Error.classList.remove("show");
+          imageForm.classList.add("active");
+        } else {
+          password1Correct = false;
+          password1Error.classList.add("show");
+          imageForm.classList.remove("active");
+        }
+      });
+
+      // Check password 2
+      password2Input.addEventListener("change", () => {
+        if (password2Input.value === PASSWORD2) {
+          password2Correct = true;
+          password2Error.classList.remove("show");
+          textForm.classList.add("active");
+        } else {
+          password2Correct = false;
+          password2Error.classList.add("show");
+          textForm.classList.remove("active");
+        }
+      });
+
+      // Handle image upload
+      imageInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            currentImage = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Handle star rating
+      starsContainer.addEventListener("click", (e) => {
+        if (e.target.classList.contains("star")) {
+          currentRating = parseInt(e.target.dataset.rating);
+          updateStarsUI();
+        }
+      });
+
+      function updateStarsUI() {
+        document.querySelectorAll(".stars-container .star").forEach(star => {
+          const rating = parseInt(star.dataset.rating);
+          if (rating <= currentRating) {
+            star.classList.add("active");
+          } else {
+            star.classList.remove("active");
+          }
+        });
+      }
+
+      // Event listeners
+      addBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+      modalOverlay.addEventListener("click", closeModal);
+      saveBtn.addEventListener("click", saveData);
+
+      // Load data on page load
+      const params = new URLSearchParams(window.location.search);
+      const title = params.get("title") || "Pojďme drbat";
+      document.getElementById("section-title").textContent = title;
+
+      if (title === "Pojďme drbat") {
+        document.getElementById("quote-text").textContent = "";
+        document.getElementById("citaty-page").classList.remove("with-quote");
+        loadData();
       }
     </script>
   </body>
