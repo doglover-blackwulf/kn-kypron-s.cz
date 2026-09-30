@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Pristina&display=swap" rel="stylesheet" />
     <style>
-      body.drbat-theme { background: linear-gradient(135deg, #A2B447 0%, #556F30 100%); }
       .drbat-section { display: none; position: relative; min-height: 360px; }
       body.drbat-theme .drbat-section { display: block; }
-      .add-button { position: absolute; right: 1rem; bottom: 1rem; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border: 3px solid #fff; border-radius: 50%; background: #000; color: #fff; font-size: 1.8rem; line-height: 1; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+      body.drbat-theme #citaty-page, body.drbat-theme #description-text { display: none; }
+      .drbat-title { margin-bottom: 1rem; }
+      .add-button { position: fixed; right: 1rem; bottom: 1rem; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; border-radius: 6px; background: #000; color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
       .add-button:hover { transform: scale(1.08); }
       .drbat-container { padding: 1rem 0 5rem; }
       .drbat-item { margin-bottom: 1.25rem; padding: 1.25rem; background: #fff; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.14); }
@@ -57,6 +58,7 @@
       <p class="description" id="description-text"></p>
 
       <section class="drbat-section" id="drbat-section" aria-label="Pojďme drbat">
+        <h1 class="section-title drbat-title">Pojďme drbat</h1>
         <div class="drbat-container" id="drbat-list"></div>
         <button class="add-button" id="add-btn" type="button" aria-label="Přidat příspěvek">+</button>
       </section>
@@ -92,8 +94,14 @@
 
     <script>
       const params = new URLSearchParams(location.search);
-      const title = params.get('title') || 'Citáty';
-      const isDrbat = title === 'Pojďme drbat';
+      const rawTitle = params.get('title') || 'Citáty';
+      let decodedTitle = rawTitle;
+      try { decodedTitle = decodeURIComponent(rawTitle); } catch { /* URLSearchParams may already have decoded malformed input */ }
+      const normalizeTitle = value => value.trim().replace(/\s+/g, ' ').toLocaleLowerCase('cs-CZ');
+      const normalizedTitle = normalizeTitle(decodedTitle);
+      const isDrbat = normalizedTitle === normalizeTitle('Pojďme drbat');
+      const isQuotes = normalizedTitle === normalizeTitle('Citáty');
+      const title = isDrbat ? 'Pojďme drbat' : isQuotes ? 'Citáty' : decodedTitle.trim().replace(/\s+/g, ' ');
       const $ = id => document.getElementById(id);
       document.body.classList.toggle('drbat-theme', isDrbat);
       $('section-title').textContent = title;
@@ -101,7 +109,7 @@
       if (isDrbat) {
         $('citaty-page').classList.remove('with-quote');
         loadItems();
-      } else if (title === 'Citáty') {
+      } else if (isQuotes) {
         $('quote-text').textContent = 'Buď jako zima. Chladná ale nádherná.';
         $('description-text').textContent = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, mang a příběhů. A pokud jste umělci a děláte kresby nebo animace, můžete mi napsat na Instagram: knihy.pro.nas.';
         $('citaty-page').classList.add('with-quote');
