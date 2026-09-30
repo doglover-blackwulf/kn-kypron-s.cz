@@ -12,13 +12,7 @@
       body.drbat-theme .drbat-only { display: flex; }
       body.drbat-theme .drbat-container { display: block; }
       body:not(.drbat-theme) .drbat-container { display: none; }
-
-      .add-button {
-        position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px;
-        background: #000; color: #fff; border: 3px solid #fff; border-radius: 50%;
-        font-size: 2rem; cursor: pointer; align-items: center; justify-content: center;
-        box-shadow: 0 4px 12px rgba(0,0,0,.3); z-index: 999;
-      }
+      .add-button { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: #000; color: #fff; border: 3px solid #fff; border-radius: 50%; font-size: 2rem; cursor: pointer; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,.3); z-index: 999; }
       .add-button:hover { transform: scale(1.1); }
       .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1000; }
       .modal-overlay.active { display: block; }
@@ -69,29 +63,10 @@
     <div class="modal-overlay drbat-only" id="modal-overlay"></div>
     <div class="modal-panel drbat-only" id="modal-panel">
       <button class="modal-close" id="close-btn" aria-label="Zavřít">✕</button>
-      <div class="password-section">
-        <label for="password1">Heslo pro obrázek:</label>
-        <input type="password" id="password1" placeholder="Zadej heslo...">
-        <div class="password-error" id="password1-error">Špatné heslo!</div>
-      </div>
-      <div class="password-section">
-        <label for="password2">Heslo pro text:</label>
-        <input type="password" id="password2" placeholder="Zadej heslo...">
-        <div class="password-error" id="password2-error">Špatné heslo!</div>
-      </div>
-      <div class="form-group" id="image-form">
-        <label for="image-input">Vložit obrázek:</label>
-        <input type="file" id="image-input" accept="image/*">
-      </div>
-      <div class="form-group" id="text-form">
-        <label for="text-input">Tvůj příspěvek:</label>
-        <textarea id="text-input" rows="12" placeholder="Napiš cokoliv..."></textarea>
-        <label>Hodnocení:</label>
-        <div class="stars-container" id="stars-container">
-          <span class="star" data-rating="1">★</span><span class="star" data-rating="2">★</span><span class="star" data-rating="3">★</span><span class="star" data-rating="4">★</span><span class="star" data-rating="5">★</span>
-        </div>
-        <button class="save-button" id="save-btn">Uložit</button>
-      </div>
+      <div class="password-section"><label for="password1">Heslo pro obrázek:</label><input type="password" id="password1" placeholder="Zadej heslo..."><div class="password-error" id="password1-error">Špatné heslo!</div></div>
+      <div class="password-section"><label for="password2">Heslo pro text:</label><input type="password" id="password2" placeholder="Zadej heslo..."><div class="password-error" id="password2-error">Špatné heslo!</div></div>
+      <div class="form-group" id="image-form"><label for="image-input">Vložit obrázek:</label><input type="file" id="image-input" accept="image/*"></div>
+      <div class="form-group" id="text-form"><label for="text-input">Tvůj příspěvek:</label><textarea id="text-input" rows="12" placeholder="Napiš cokoliv..."></textarea><label>Hodnocení:</label><div class="stars-container" id="stars-container"><span class="star" data-rating="1">★</span><span class="star" data-rating="2">★</span><span class="star" data-rating="3">★</span><span class="star" data-rating="4">★</span><span class="star" data-rating="5">★</span></div><button class="save-button" id="save-btn">Uložit</button></div>
     </div>
 
     <script>
@@ -105,7 +80,7 @@
         document.getElementById('citaty-page').classList.remove('with-quote');
       } else if (title === 'Citáty') {
         document.getElementById('quote-text').textContent = 'Buď jako zima. Chladná ale nádherná.';
-        document.getElementById('description-text').innerHTML = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, manga a příběhů.';
+        document.getElementById('description-text').textContent = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, mang a příběhů. A pokud jste umělci a děláte kresby nebo animace, můžete mi napsat na Instagram: knihy.pro.nas.';
         document.getElementById('citaty-page').classList.add('with-quote');
         document.getElementById('description-text').classList.add('show-description');
       }
@@ -121,22 +96,22 @@
         el.className = 'drbat-item';
         if (item.image) { const img = document.createElement('img'); img.src = item.image; img.alt = 'Obrázek příspěvku'; el.appendChild(img); }
         if (item.text) { const text = document.createElement('div'); text.className = 'drbat-text'; text.textContent = item.text; el.appendChild(text); }
-        if (item.rating) { const stars = document.createElement('div'); stars.className = 'drbat-stars'; for (let i=1;i<=5;i++) { const star=document.createElement('span'); star.className='star'+(i<=item.rating?' active':''); star.textContent='★'; stars.appendChild(star); } el.appendChild(stars); }
+        if (item.rating) { const stars = document.createElement('div'); stars.className = 'drbat-stars'; for (let i = 1; i <= 5; i++) { const star = document.createElement('span'); star.className = 'star' + (i <= item.rating ? ' active' : ''); star.textContent = '★'; stars.appendChild(star); } el.appendChild(stars); }
         $('drbat-list').appendChild(el);
       }
       function loadData() { try { JSON.parse(localStorage.getItem('drbat-items') || '[]').forEach(displayItem); } catch {} }
-      function resetForm() { $('password1').value=''; $('password2').value=''; $('image-input').value=''; $('text-input').value=''; currentRating=0; currentImage=null; $('image-form').classList.remove('active'); $('text-form').classList.remove('active'); document.querySelectorAll('#stars-container .star').forEach(s=>s.classList.remove('active')); document.querySelectorAll('.password-error').forEach(e=>e.classList.remove('show')); }
+      function resetForm() { $('password1').value = ''; $('password2').value = ''; $('image-input').value = ''; $('text-input').value = ''; currentRating = 0; currentImage = null; $('image-form').classList.remove('active'); $('text-form').classList.remove('active'); document.querySelectorAll('#stars-container .star').forEach(s => s.classList.remove('active')); document.querySelectorAll('.password-error').forEach(e => e.classList.remove('show')); }
       function closeModal() { $('modal-overlay').classList.remove('active'); $('modal-panel').classList.remove('active'); resetForm(); }
       if (isDrbat) {
         loadData();
         $('add-btn').addEventListener('click', () => { $('modal-overlay').classList.add('active'); $('modal-panel').classList.add('active'); });
         $('close-btn').addEventListener('click', closeModal);
         $('modal-overlay').addEventListener('click', closeModal);
-        $('password1').addEventListener('change', e => { const ok=e.target.value===PASSWORD1; $('image-form').classList.toggle('active',ok); $('password1-error').classList.toggle('show',!ok); });
-        $('password2').addEventListener('change', e => { const ok=e.target.value===PASSWORD2; $('text-form').classList.toggle('active',ok); $('password2-error').classList.toggle('show',!ok); });
-        $('image-input').addEventListener('change', e => { const file=e.target.files[0]; if(file){ const reader=new FileReader(); reader.onload=ev=>currentImage=ev.target.result; reader.readAsDataURL(file); } });
-        $('stars-container').addEventListener('click', e => { if(e.target.classList.contains('star')) { currentRating=Number(e.target.dataset.rating); document.querySelectorAll('#stars-container .star').forEach(s=>s.classList.toggle('active',Number(s.dataset.rating)<=currentRating)); } });
-        $('save-btn').addEventListener('click', () => { const text=$('text-input').value.trim(); if(!currentImage && !text) return alert('Vyplň alespoň něco!'); const item={image:currentImage,text,rating:currentRating}; const items=JSON.parse(localStorage.getItem('drbat-items')||'[]'); items.push(item); localStorage.setItem('drbat-items',JSON.stringify(items)); displayItem(item); closeModal(); });
+        $('password1').addEventListener('change', e => { const ok = e.target.value === PASSWORD1; $('image-form').classList.toggle('active', ok); $('password1-error').classList.toggle('show', !ok); });
+        $('password2').addEventListener('change', e => { const ok = e.target.value === PASSWORD2; $('text-form').classList.toggle('active', ok); $('password2-error').classList.toggle('show', !ok); });
+        $('image-input').addEventListener('change', e => { const file = e.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = ev => currentImage = ev.target.result; reader.readAsDataURL(file); } });
+        $('stars-container').addEventListener('click', e => { if (e.target.classList.contains('star')) { currentRating = Number(e.target.dataset.rating); document.querySelectorAll('#stars-container .star').forEach(s => s.classList.toggle('active', Number(s.dataset.rating) <= currentRating)); } });
+        $('save-btn').addEventListener('click', () => { const text = $('text-input').value.trim(); if (!currentImage && !text) return alert('Vyplň alespoň něco!'); const item = { image: currentImage, text, rating: currentRating }; const items = JSON.parse(localStorage.getItem('drbat-items') || '[]'); items.push(item); localStorage.setItem('drbat-items', JSON.stringify(items)); displayItem(item); closeModal(); });
       }
     </script>
   </body>
