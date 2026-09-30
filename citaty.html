@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Pristina&display=swap" rel="stylesheet" />
     <style>
+      .drbat-section { position: relative; }
       .drbat-only { display: none; }
-      body.drbat-theme .drbat-only { display: flex; }
-      body.drbat-theme .drbat-container { display: block; }
-      body:not(.drbat-theme) .drbat-container { display: none; }
-      .add-button { position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: #000; color: #fff; border: 3px solid #fff; border-radius: 50%; font-size: 2rem; cursor: pointer; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,.3); z-index: 999; }
+      .drbat-section .add-button { display: flex; }
+      .drbat-section .drbat-container { display: block; }
+      .add-button { position: absolute; bottom: 2rem; right: 2rem; width: 60px; height: 60px; background: #000; color: #fff; border: 3px solid #fff; border-radius: 50%; font-size: 2rem; cursor: pointer; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,.3); z-index: 999; display: none; }
       .add-button:hover { transform: scale(1.1); }
       .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 1000; }
       .modal-overlay.active { display: block; }
@@ -31,7 +31,8 @@
       .star { font-size: 2rem; cursor: pointer; color: #ddd; }
       .star.active { color: #ffc107; }
       .save-button { background: #333; color: #fff; border: 0; padding: .75rem 1.5rem; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 1rem; }
-      .drbat-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+      .drbat-container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; display: none; }
+      .drbat-section .drbat-container { display: block; }
       .drbat-item { background: #fff; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
       .drbat-item img { max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: 8px; }
       .drbat-text { font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; color: #333; white-space: pre-wrap; }
@@ -56,12 +57,15 @@
         <p class="quote" id="quote-text"></p>
       </article>
       <p class="description" id="description-text"></p>
-      <div class="drbat-container" id="drbat-list"></div>
+      
+      <div class="drbat-section">
+        <button class="add-button" id="add-btn" aria-label="Přidat příspěvek">+</button>
+        <div class="drbat-container" id="drbat-list"></div>
+      </div>
     </main>
 
-    <button class="add-button drbat-only" id="add-btn" aria-label="Přidat příspěvek">+</button>
-    <div class="modal-overlay drbat-only" id="modal-overlay"></div>
-    <div class="modal-panel drbat-only" id="modal-panel">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-panel" id="modal-panel">
       <button class="modal-close" id="close-btn" aria-label="Zavřít">✕</button>
       <div class="password-section"><label for="password1">Heslo pro obrázek:</label><input type="password" id="password1" placeholder="Zadej heslo..."><div class="password-error" id="password1-error">Špatné heslo!</div></div>
       <div class="password-section"><label for="password2">Heslo pro text:</label><input type="password" id="password2" placeholder="Zadej heslo..."><div class="password-error" id="password2-error">Špatné heslo!</div></div>
@@ -78,6 +82,7 @@
 
       if (isDrbat) {
         document.getElementById('citaty-page').classList.remove('with-quote');
+        document.querySelector('.drbat-section').classList.add('drbat-section');
       } else if (title === 'Citáty') {
         document.getElementById('quote-text').textContent = 'Buď jako zima. Chladná ale nádherná.';
         document.getElementById('description-text').textContent = 'Ahoj lidi, tady můžete najít různé citáty a fanarty z vašich oblíbených knížek, filmů, seriálů, mang a příběhů. A pokud jste umělci a děláte kresby nebo animace, můžete mi napsat na Instagram: knihy.pro.nas.';
