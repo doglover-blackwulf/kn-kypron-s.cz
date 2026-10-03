@@ -8,43 +8,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Pristina&display=swap" rel="stylesheet">
   <style>
     body.drbat-page { background: linear-gradient(135deg, #A2B447 0%, #556F30 100%); min-height: 100vh; }
-    .drbat-main { display: flex; gap: 1.5rem; align-items: flex-start; padding: 2rem 1rem 4rem; max-width: 1200px; margin: 0 auto; }
-    .drbat-left { flex: 0 0 150px; }
-    .drbat-right { flex: 1; }
-    .drbat-header { padding: 1rem; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.2); border-radius: 12px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,.15); margin-bottom: .8rem; }
-    .drbat-title { margin: 0; font-family: 'Pristina', cursive; font-size: clamp(1.5rem, 3vw, 2.5rem); color: #000; font-weight: 400; line-height: 1.1; }
-    .modal-panel { position: static; z-index: auto; top: auto; left: auto; transform: none; width: 100%; height: auto; max-height: none; padding: .8rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.15); display: flex; flex-direction: column; overflow-y: visible; }
-    .modal-overlay { display: none; }
-    .modal-close { display: none; }
-    .password-section { margin-bottom: .5rem; padding: .6rem; background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%); border: 1px solid #e0e0e0; border-radius: 5px; }
-    .password-section label, .form-group label { display: block; margin-bottom: .2rem; color: #333; font-weight: 600; font-size: .7rem; }
-    .password-section input, .form-group input[type="file"], .form-group textarea { width: 100%; padding: .4rem .5rem; border: 1px solid #ddd; border-radius: 4px; font: inherit; font-size: .75rem; transition: border-color .2s; box-sizing: border-box; }
-    .password-section input:focus, .form-group input[type="file"]:focus, .form-group textarea:focus { outline: none; border-color: #A2B447; background: #fafbfc; }
-    .password-error { display: none; color: #d32f2f; font-size: .65rem; margin-top: .1rem; font-weight: 500; }
+    .drbat-main { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; max-width: 1200px; margin: 0 auto; padding: 2rem 1.25rem 5rem; }
+    .drbat-left { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+    .drbat-right { min-width: 0; }
+    .drbat-header { padding: 1.5rem; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,.15); }
+    .drbat-title { margin: 0; font-family: 'Pristina', cursive; font-size: clamp(2.5rem, 5vw, 4.5rem); color: #000; font-weight: 400; line-height: 1.1; }
+
+    /* Formulář pod nadpisem - skrytý, otevře se tlačítkem + */
+    .modal-panel { display: none; width: 100%; max-width: 280px; padding: .9rem; background: #fff; border-radius: 10px; box-shadow: 0 4px 14px rgba(0,0,0,.2); position: relative; }
+    .modal-panel.active { display: block; }
+    .modal-close { position: absolute; top: .4rem; right: .5rem; border: 0; background: none; color: #999; font-size: 1rem; cursor: pointer; }
+    .modal-close:hover { color: #333; }
+    .password-section { margin-bottom: .6rem; padding: .6rem; background: #f5f5f5; border-radius: 6px; }
+    .password-section label, .form-group label { display: block; margin-bottom: .25rem; color: #333; font-weight: 600; font-size: .75rem; }
+    .password-section input, .form-group input[type="file"], .form-group textarea { width: 100%; padding: .4rem .5rem; border: 1px solid #ddd; border-radius: 5px; font: inherit; font-size: .8rem; box-sizing: border-box; }
+    .password-section input:focus, .form-group textarea:focus { outline: none; border-color: #A2B447; }
+    .password-error { display: none; color: #d32f2f; font-size: .7rem; margin-top: .15rem; }
     .password-error.show { display: block; }
-    .form-group { display: none; margin-bottom: .5rem; }
-    .form-group.active { display: block; animation: slideIn .2s ease; }
-    .form-group textarea { min-height: 50px; resize: vertical; }
+    .form-group { display: none; margin-bottom: .6rem; }
+    .form-group.active { display: block; }
+    .form-group textarea { min-height: 70px; resize: vertical; }
     .stars-container { display: flex; gap: .15rem; margin: .3rem 0; }
-    .star { color: #ddd; font-size: .9rem; cursor: pointer; transition: transform .1s; }
-    .star:hover { transform: scale(1.05); }
-    .star.active { color: #ffc107; text-shadow: 0 0 2px rgba(255,193,7,.5); }
-    .save-button { margin-top: .4rem; padding: .4rem .6rem; border: 0; border-radius: 4px; background: linear-gradient(135deg, #A2B447 0%, #8a9a38 100%); color: #fff; font-weight: 700; cursor: pointer; font-size: .7rem; transition: all .2s; box-shadow: 0 2px 6px rgba(162,180,71,.3); width: 100%; }
-    .save-button:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(162,180,71,.4); }
-    .save-button:active { transform: translateY(0); }
-    .drbat-list { display: flex; flex-direction: column; gap: .8rem; }
-    .drbat-item { background: #fff; border-radius: 8px; padding: .8rem; box-shadow: 0 2px 8px rgba(0,0,0,.1); border-left: 2px solid #A2B447; transition: transform .2s; }
-    .drbat-item:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.12); }
-    .drbat-item img { display: block; max-width: 100%; height: auto; margin-bottom: .6rem; border-radius: 6px; }
-    .drbat-text { color: #333; line-height: 1.4; white-space: pre-wrap; margin-bottom: .3rem; font-size: .85rem; }
-    .drbat-stars { display: flex; gap: .15rem; margin: .5rem 0; }
-    .drbat-stars .star { font-size: .85rem; cursor: default; }
-    .add-button { position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 999; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border: 3px solid #fff; border-radius: 50%; background: #000; color: #fff; font-size: 1.6rem; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.3); transition: all .2s; }
-    .add-button:hover { transform: scale(1.1); }
-    .add-button:active { transform: scale(0.95); }
-    @keyframes slideIn { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 1024px) { .drbat-main { flex-direction: column; gap: 1rem; } .drbat-left { flex: 1; width: 100%; } .drbat-right { width: 100%; } }
-    @media (max-width: 620px) { .drbat-main { padding: 1rem .5rem 3rem; gap: .8rem; } .add-button { width: 44px; height: 44px; font-size: 1.4rem; } }
+    .star { color: #ddd; font-size: 1.1rem; cursor: pointer; }
+    .star.active { color: #ffc107; }
+    .save-button { margin-top: .4rem; padding: .45rem .8rem; border: 0; border-radius: 5px; background: #A2B447; color: #fff; font-weight: 700; cursor: pointer; font-size: .8rem; width: 100%; }
+    .save-button:hover { background: #8a9a38; }
+
+    /* Příspěvky */
+    .drbat-list { display: flex; flex-direction: column; gap: 1rem; }
+    .drbat-item { background: #fff; border-radius: 12px; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,.14); border-left: 4px solid #A2B447; }
+    .drbat-item img { display: block; max-width: 100%; max-height: 260px; width: auto; margin: 0 auto .75rem; border-radius: 8px; object-fit: contain; }
+    .drbat-text { color: #333; line-height: 1.5; white-space: pre-wrap; font-size: .95rem; }
+    .drbat-stars { display: flex; gap: .15rem; margin: .6rem 0 0; }
+    .drbat-stars .star { font-size: 1rem; cursor: default; }
+
+    /* Tlačítko + v pravém dolním rohu */
+    .add-button { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 999; width: 52px; height: 52px; padding: 0; display: flex; align-items: center; justify-content: center; border: 3px solid #fff; border-radius: 50%; background: #000; color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+    .add-button:hover { transform: scale(1.08); }
+
+    @media (max-width: 800px) {
+      .drbat-main { grid-template-columns: 1fr; padding: 1.25rem .75rem 5rem; }
+      .modal-panel { max-width: 100%; }
+    }
   </style>
 </head>
 <body class="section-body drbat-page">
@@ -53,10 +58,11 @@
     <div class="drbat-left">
       <header class="drbat-header"><h1 class="drbat-title">Pojďme drbat</h1></header>
       <aside class="modal-panel" id="modal-panel" aria-label="Nový příspěvek">
-        <div class="password-section"><label for="password1">Heslo obrázek:</label><input type="password" id="password1" placeholder="Heslo..."><div class="password-error" id="password1-error">Špatně!</div></div>
-        <div class="password-section"><label for="password2">Heslo text:</label><input type="password" id="password2" placeholder="Heslo..."><div class="password-error" id="password2-error">Špatně!</div></div>
-        <div class="form-group" id="image-form"><label for="image-input">Obrázek:</label><input type="file" id="image-input" accept="image/*"></div>
-        <div class="form-group" id="text-form"><label for="text-input">Příspěvek:</label><textarea id="text-input" rows="2" placeholder="Napiš..."></textarea><label>Hvězdy:</label><div class="stars-container" id="stars-container"><span class="star" data-rating="1">★</span><span class="star" data-rating="2">★</span><span class="star" data-rating="3">★</span><span class="star" data-rating="4">★</span><span class="star" data-rating="5">★</span></div><button class="save-button" id="save-btn" type="button">Ulož</button></div>
+        <button class="modal-close" id="close-btn" type="button" aria-label="Zavřít">✕</button>
+        <div class="password-section"><label for="password1">Heslo pro obrázek:</label><input type="password" id="password1" placeholder="Zadej heslo..."><div class="password-error" id="password1-error">Špatné heslo!</div></div>
+        <div class="password-section"><label for="password2">Heslo pro text:</label><input type="password" id="password2" placeholder="Zadej heslo..."><div class="password-error" id="password2-error">Špatné heslo!</div></div>
+        <div class="form-group" id="image-form"><label for="image-input">Vložit obrázek:</label><input type="file" id="image-input" accept="image/*"></div>
+        <div class="form-group" id="text-form"><label for="text-input">Tvůj příspěvek:</label><textarea id="text-input" rows="4" placeholder="Napiš cokoliv..."></textarea><label>Hodnocení:</label><div class="stars-container" id="stars-container"><span class="star" data-rating="1">★</span><span class="star" data-rating="2">★</span><span class="star" data-rating="3">★</span><span class="star" data-rating="4">★</span><span class="star" data-rating="5">★</span></div><button class="save-button" id="save-btn" type="button">Uložit</button></div>
       </aside>
     </div>
     <section class="drbat-right drbat-list" id="drbat-list" aria-label="Uložené příspěvky"></section>
@@ -72,7 +78,7 @@
     function displayItem(item) {
       const element = document.createElement('article');
       element.className = 'drbat-item';
-      if (item.image) { const image = document.createElement('img'); image.src = item.image; image.alt = 'Obrázek'; element.appendChild(image); }
+      if (item.image) { const image = document.createElement('img'); image.src = item.image; image.alt = 'Obrázek příspěvku'; element.appendChild(image); }
       if (item.text) { const text = document.createElement('div'); text.className = 'drbat-text'; text.textContent = item.text; element.appendChild(text); }
       if (item.rating) { const stars = document.createElement('div'); stars.className = 'drbat-stars'; for (let i = 1; i <= 5; i += 1) { const star = document.createElement('span'); star.className = 'star' + (i <= item.rating ? ' active' : ''); star.textContent = '★'; stars.appendChild(star); } element.appendChild(stars); }
       $('drbat-list').appendChild(element);
@@ -81,13 +87,15 @@
     try { JSON.parse(localStorage.getItem('drbat-items') || '[]').forEach(displayItem); } catch (error) { console.error(error); }
 
     function resetForm() { $('password1').value = ''; $('password2').value = ''; $('image-input').value = ''; $('text-input').value = ''; currentImage = null; currentRating = 0; $('image-form').classList.remove('active'); $('text-form').classList.remove('active'); document.querySelectorAll('.password-error').forEach(error => error.classList.remove('show')); document.querySelectorAll('#stars-container .star').forEach(star => star.classList.remove('active')); }
+    function closeModal() { $('modal-panel').classList.remove('active'); resetForm(); }
 
-    $('add-btn').addEventListener('click', () => { $('password1').focus(); });
+    $('add-btn').addEventListener('click', () => { $('modal-panel').classList.toggle('active'); });
+    $('close-btn').addEventListener('click', closeModal);
     $('password1').addEventListener('change', event => { const valid = event.target.value === PASSWORD1; $('image-form').classList.toggle('active', valid); $('password1-error').classList.toggle('show', !valid); });
     $('password2').addEventListener('change', event => { const valid = event.target.value === PASSWORD2; $('text-form').classList.toggle('active', valid); $('password2-error').classList.toggle('show', !valid); });
     $('image-input').addEventListener('change', event => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = result => { currentImage = result.target.result; }; reader.readAsDataURL(file); });
     $('stars-container').addEventListener('click', event => { if (!event.target.classList.contains('star')) return; currentRating = Number(event.target.dataset.rating); document.querySelectorAll('#stars-container .star').forEach(star => star.classList.toggle('active', Number(star.dataset.rating) <= currentRating)); });
-    $('save-btn').addEventListener('click', () => { const text = $('text-input').value.trim(); if (!currentImage && !text) return alert('Něco napiš!'); const item = { image: currentImage, text, rating: currentRating }; const items = JSON.parse(localStorage.getItem('drbat-items') || '[]'); items.push(item); localStorage.setItem('drbat-items', JSON.stringify(items)); displayItem(item); resetForm(); });
+    $('save-btn').addEventListener('click', () => { const text = $('text-input').value.trim(); if (!currentImage && !text) return alert('Vyplň alespoň něco!'); const item = { image: currentImage, text, rating: currentRating }; const items = JSON.parse(localStorage.getItem('drbat-items') || '[]'); items.push(item); localStorage.setItem('drbat-items', JSON.stringify(items)); displayItem(item); closeModal(); });
   </script>
 </body>
 </html>
